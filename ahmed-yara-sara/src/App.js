@@ -15,8 +15,10 @@ function App(props) {
       <Router>
         <Switch>
        
-        
-          <Route path="/" exact component={ActorPage}/>
+        <Route path="/" exact>
+            <Main movies={movies} />
+          </Route>
+          <Route path="/person/:actor_id"  component={ActorPage}/>
           
        
           <Route path="/Movie/:id" component={MoviePage}></Route>

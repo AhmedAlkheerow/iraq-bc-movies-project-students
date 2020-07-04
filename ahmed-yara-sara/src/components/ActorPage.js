@@ -9,7 +9,8 @@ import {useHistory} from "react-router";
 import Production from "./Production";
 export default function Actors(props) {
     const history = useHistory();
-   const  person_id= 53714;
+   
+   const  person_id= props.match.params.actor_id;
     const [actor,setActor]=useState("");
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
   const constructUrl = (path, query) => {

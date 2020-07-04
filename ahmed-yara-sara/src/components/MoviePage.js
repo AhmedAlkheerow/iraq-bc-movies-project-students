@@ -33,10 +33,7 @@ export default function MoviePage(props) {
     let result = await fetch(actorURl);
     let actorData = await result.json();
     console.log(actorData);
-    let actors = [];
-    actorData.cast.map((actor) => {
-      actors.push(actor.name);
-    });
+    let actors = actorData.cast;
     setCast(actors);
     //movieTrailer
     let trailerURL = constructUrl(`movie/${movie_id}/videos`);
