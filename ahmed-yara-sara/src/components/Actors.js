@@ -7,6 +7,7 @@ import Image from "./Image";
 import MovieDetails from "./MovieDetails";
 import { useHistory } from "react-router";
 import Production from "./Production";
+
 export default function Actors(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);

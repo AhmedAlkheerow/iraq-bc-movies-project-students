@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Spinner, Form, FormControl, Button } from "react-bootstrap";
 import { MovieContext } from "./StateProvider";
+
 export default function Search() {
   const { setMovies } = useContext(MovieContext);
   const [isLoading, setLoadingStatus] = React.useState(false);
