@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Main from "./components/Main";
@@ -6,22 +7,23 @@ import FooterBar from "./components/Footer";
 import MoviePage from "./components/MoviePage";
 import ActorPage from "./components/ActorPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-function App(props) {
-  const [movies, setMovies] = useState([]);
-
+import MovieContextProvider from "./components/StateProvider";
+function App() {
   return (
     <>
-      <Navbar handleMovies={setMovies} />
-      <Router>
-        <Switch>
-          <Route path="/" exact>
-            <Main movies={movies} />
-          </Route>
-          <Route path="/person/:actor_id" component={ActorPage} />
-          <Route path="/Movie/:id" component={MoviePage}></Route>
-        </Switch>
-      </Router>
-      <FooterBar />
+      <MovieContextProvider>
+        <Navbar />
+        <Router>
+          <Switch>
+            <Route path="/" exact>
+              <Main />
+            </Route>
+            <Route path="/person/:actor_id" component={ActorPage} />
+            <Route path="/Movie/:id" component={MoviePage}></Route>
+          </Switch>
+        </Router>
+        <FooterBar />
+      </MovieContextProvider>
     </>
   );
 }

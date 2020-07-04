@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Spinner, Form, FormControl, Button } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-export default function Search(props) {
+import { MovieContext } from "./StateProvider";
+export default function Search() {
+  const { setMovies } = useContext(MovieContext);
   const [isLoading, setLoadingStatus] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState("");
   const TMDB_BASE_URL = "https://api.themoviedb.org/3";
@@ -33,7 +34,7 @@ export default function Search(props) {
     fetch(URL)
       .then((movies) => movies.json())
       .then((data) => {
-        props.getMoviesOnSearch(data.results);
+        setMovies(data.results);
         setLoadingStatus(false);
       });
   }

@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Form } from "react-bootstrap";
-export default function DropdownMenu(props) {
+import { MovieContext } from "./StateProvider";
+export default function DropdownMenu() {
   const [Genres, setGenres] = useState([]);
+  const { setMovies } = useContext(MovieContext);
 
   const TMDB_BASE_URL = "https://api.themoviedb.org/3";
   const constructUrl = (path) => {
@@ -28,13 +30,13 @@ export default function DropdownMenu(props) {
       .then((response) => response.json())
       .then((genreData) => {
         if (parseId === 0) {
-          props.getMoviesOnChange(
+          setMovies(
             genreData.results.map((movie) => {
               return movie;
             })
           );
         } else {
-          props.getMoviesOnChange(
+          setMovies(
             genreData.results.filter((movie) => {
               return movie.genre_ids.includes(parseId);
             })

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import MovieItem from "./MovieItem";
+import { MovieContext } from "./StateProvider";
 export default function MovieGrid(props) {
-  const movies = props.movies;
+  const { movies } = useContext(MovieContext);
 
   return (
     <>
