@@ -14,13 +14,10 @@ function App(props) {
       <Navbar handleMovies={setMovies} />
       <Router>
         <Switch>
-       
-        <Route path="/" exact>
+          <Route path="/" exact>
             <Main movies={movies} />
           </Route>
-          <Route path="/person/:actor_id"  component={ActorPage}/>
-          
-       
+          <Route path="/person/:actor_id" component={ActorPage} />
           <Route path="/Movie/:id" component={MoviePage}></Route>
         </Switch>
       </Router>
