@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 import { MovieContext } from "./StateProvider";
 export default function DropdownMenu() {
   const [Genres, setGenres] = useState([]);
-  const {setGenreId } = useContext(MovieContext);
+  const {dispatch } = useContext(MovieContext);
 
   const TMDB_BASE_URL = "https://api.themoviedb.org/3";
   const constructUrl = (path) => {
@@ -25,7 +25,8 @@ export default function DropdownMenu() {
   });
   const handleChange = (e) => {
     const parseId = parseInt(e.target.value);
-    setGenreId(parseId);
+    dispatch({type:"setGenreId",payload:parseId})
+    // setGenreId(parseId);
     // const trendingURL = constructUrl("trending/all/day");
     // fetch(trendingURL)
     //   .then((response) => response.json())

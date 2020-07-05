@@ -3,7 +3,9 @@ import { Spinner, Form, FormControl, Button } from "react-bootstrap";
 import { MovieContext } from "./StateProvider";
 
 export default function Search() {
-  const { setMovies } = useContext(MovieContext);
+  // const { setMovies } = useContext(MovieContext);
+  const { dispatch } = useContext(MovieContext);
+
   const [isLoading, setLoadingStatus] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState("");
   const TMDB_BASE_URL = "https://api.themoviedb.org/3";
@@ -35,7 +37,9 @@ export default function Search() {
     fetch(URL)
       .then((movies) => movies.json())
       .then((data) => {
-        setMovies(data.results);
+        // setMovies(data.results);
+        dispatch({type:"setMovies",payload:data.results})
+
         setLoadingStatus(false);
       });
   }

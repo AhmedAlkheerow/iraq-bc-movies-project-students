@@ -20,6 +20,9 @@ function App() {
             </Route>
             <Route path="/person/:actor_id" component={ActorPage} />
             <Route path="/Movie/:id" component={MoviePage}></Route>
+            {/* (this is for the query) */}
+            {/* <Route path="/search" component={Main} />   */} 
+
           </Switch>
         </Router>
         <FooterBar />

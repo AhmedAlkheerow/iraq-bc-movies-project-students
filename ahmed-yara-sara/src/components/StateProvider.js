@@ -1,10 +1,14 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext,useReducer } from "react";
 
 export const MovieContext = createContext();
 const MovieContextProvider = (props) => {
 
-  const [movies, setMovies] = useState([]);
-  const [genreId, setGenreId] = useState(0);
+  // const [movies, setMovies] = useState([]);
+  // const [genreId, setGenreId] = useState(0);
+
+  const [state, dispatch] = useReducer(reducer, initState);
+
+
 
   // const handleMoives = (movies)=>{
     
@@ -38,10 +42,28 @@ const MovieContextProvider = (props) => {
   // }
 
   return (
-    <MovieContext.Provider value={{ movies, setMovies,genreId, setGenreId }}>
+    <MovieContext.Provider value={{ state,dispatch}}>
       {props.children}
     </MovieContext.Provider>
   );
 };
 
 export default MovieContextProvider;
+
+
+
+
+const initState= {movies: [],genreId:0};
+
+
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'setMovies':
+      return {...state,movies:action.payload };
+    case 'setGenreId':
+      return {...state,genreId: action.payload};
+    default:
+      throw new Error();
+  }
+}
