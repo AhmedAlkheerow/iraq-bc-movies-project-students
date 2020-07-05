@@ -5,5 +5,5 @@
   transition: all 1.5s ease;
 }
 .imageZoom:hover img {
-  transform: scale(0.5);
+  transform: scale(1.15);
 }

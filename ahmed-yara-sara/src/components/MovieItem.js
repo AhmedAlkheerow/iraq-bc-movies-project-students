@@ -25,15 +25,15 @@ function MovieItem(props) {
               </div>
               <Card.Body>
                 <div>
-                  <p>{title}</p>
+                  <p><strong>{title}</strong></p>
                 </div>
-                <div className="d-flex justify-content-center pt-2">
-                  <div className="m-auto p-2">
+                <div >
+                  <div >
                     <span className="badge badge-warning">
                       Popularity: {popularity}
                     </span>
                   </div>
-                  <div className="m-auto p-2">
+                  <div>
                     <span className="badge badge-info">
                       Release-Date: {release_date}
                     </span>
