@@ -62,7 +62,10 @@ function reducer(state, action) {
     case 'setMovies':
       return {...state,movies:action.payload };
     case 'setGenreId':
-      return {...state,genreId: action.payload};
+      // for instant reload we will use this
+      // return {...state,genreId:action.payload} 
+      state.genreId= action.payload;
+      return state
     default:
       throw new Error();
   }
