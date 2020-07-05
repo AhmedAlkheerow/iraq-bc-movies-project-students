@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 import { MovieContext } from "./StateProvider";
 export default function DropdownMenu() {
   const [Genres, setGenres] = useState([]);
-  const { setMovies } = useContext(MovieContext);
+  const {setGenreId } = useContext(MovieContext);
 
   const TMDB_BASE_URL = "https://api.themoviedb.org/3";
   const constructUrl = (path) => {
@@ -25,24 +25,25 @@ export default function DropdownMenu() {
   });
   const handleChange = (e) => {
     const parseId = parseInt(e.target.value);
-    const trendingURL = constructUrl("trending/all/day");
-    fetch(trendingURL)
-      .then((response) => response.json())
-      .then((genreData) => {
-        if (parseId === 0) {
-          setMovies(
-            genreData.results.map((movie) => {
-              return movie;
-            })
-          );
-        } else {
-          setMovies(
-            genreData.results.filter((movie) => {
-              return movie.genre_ids.includes(parseId);
-            })
-          );
-        }
-      });
+    setGenreId(parseId);
+    // const trendingURL = constructUrl("trending/all/day");
+    // fetch(trendingURL)
+    //   .then((response) => response.json())
+    //   .then((genreData) => {
+    //     if (parseId === 0) {
+    //       setMovies(
+    //         genreData.results.map((movie) => {
+    //           return movie;
+    //         })
+    //       );
+    //     } else {
+    //       setMovies(
+    //         genreData.results.filter((movie) => {
+    //           return movie.genre_ids.includes(parseId);
+    //         })
+    //       );
+    //     }
+    //   });
   };
 
   return (
